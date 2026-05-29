@@ -1,6 +1,6 @@
 # dotfiles
 
-Use [Dotbot](https://github.com/anishathalye/dotbot) to install.
+Use [Dotbot](https://github.com/anishathalye/dotbot) to install with `dotbot -c install.conf.yaml`.
 
 ## Stack
 
