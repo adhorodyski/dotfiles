@@ -20,6 +20,7 @@
 [user]
 	name = Adam Horodyski
 	email = ad.horodyski@gmail.com
+	signingkey = EAEF5DA3FA0AB923
 [commit]
     	gpgsign = true
 [init]
