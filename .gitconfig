@@ -5,7 +5,7 @@
 	l = log --oneline --decorate
 	wl = worktree list
 [core]
-	editor = zed --wait
+	editor = nvim
 	pager = delta
 	autocrlf = false
 [delta]
