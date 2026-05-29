@@ -13,7 +13,7 @@
 
 - shell:
   - command: ./scripts/bootstrap.sh
-    description: install packages, oh-my-zsh, theme + plugins
+    description: install packages, oh-my-zsh with addons
     stdin: true
     stdout: true
     stderr: true
