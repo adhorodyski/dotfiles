@@ -1,0 +1,23 @@
+theme = dark:Catppuccin Macchiato,light: Catppuccin Latte
+font-family = FiraCode Nerd Font Mono
+font-size = 18
+font-thicken = true
+font-thicken-strength = 0
+adjust-cell-height = 20%
+shell-integration-features = no-cursor,sudo,no-title
+cursor-style = block
+window-colorspace = "display-p3"
+#background-blur = 20
+window-decoration = true
+window-padding-x = 20
+window-padding-y = 16
+window-padding-balance = true
+window-padding-color = extend-always
+
+# macos-specific
+macos-titlebar-style = tabs
+macos-icon = retro
+
+# keybindings
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down

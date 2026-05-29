@@ -1,0 +1,27 @@
+[alias]
+	s = status
+	d = diff
+	dc = diff --cached
+	l = log --oneline --decorate
+	wl = worktree list
+[core]
+	editor = zed --wait
+	pager = delta
+	autocrlf = false
+[delta]
+	navigate = true
+	line-numbers = true
+[diff]
+	colorMoved = default
+[push]
+	autoSetupRemote = true
+[branch]
+	sort = -committerdate
+[user]
+	name = Adam Horodyski
+	email = ad.horodyski@gmail.com
+[commit]
+    	gpgsign = true
+[init]
+	defaultBranch = main
+
