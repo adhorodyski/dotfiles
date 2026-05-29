@@ -10,3 +10,10 @@
     ~/.zshrc: .zshrc
     ~/.config/ghostty: .config/ghostty
     ~/.config/nvim: .config/nvim
+
+- shell:
+  - command: ./scripts/bootstrap.sh
+    description: install packages, oh-my-zsh, theme + plugins
+    stdin: true
+    stdout: true
+    stderr: true

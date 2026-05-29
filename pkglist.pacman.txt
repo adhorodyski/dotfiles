@@ -1,0 +1,8 @@
+git
+zsh
+neovim
+git-delta
+github-cli
+gnupg
+tree
+ghostty
