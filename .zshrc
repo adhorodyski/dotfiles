@@ -57,3 +57,4 @@ _ghostty_tab_title() {
 
 add-zsh-hook precmd _ghostty_tab_title
 
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
