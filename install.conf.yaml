@@ -10,6 +10,12 @@
     ~/.zshrc: .zshrc
     ~/.config/ghostty: .config/ghostty
     ~/.config/nvim: .config/nvim
+    ~/.agents/AGENTS.md: .agents/AGENTS.md
+    ~/.agents/skills: .agents/skills
+    ~/.claude/CLAUDE.md: .claude/CLAUDE.md
+    # TODO: migrate all skills into .agents/skills and switch to a whole-dir
+    # symlink (~/.claude/skills -> .agents/skills) once local skills are moved in.
+    ~/.claude/skills/grill-me: .agents/skills/grill-me
 
 - shell:
   - command: ./scripts/bootstrap.sh
