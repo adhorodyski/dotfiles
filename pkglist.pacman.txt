@@ -2,6 +2,7 @@ git
 worktrunk
 zsh
 neovim
+ripgrep
 git-delta
 github-cli
 gnupg
