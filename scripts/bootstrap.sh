@@ -59,7 +59,7 @@ install_packages() {
   if _exists apt-get; then
     info "[apt install]"
     apt_install "$DOTFILES/pkglist.apt.txt"
-    info "not in apt — add these manually: gh, ghostty, fnm"
+    info "not in apt — add these manually: gh, ghostty, fnm, worktrunk"
     return
   fi
 }
