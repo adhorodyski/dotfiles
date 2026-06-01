@@ -9,6 +9,7 @@
     ~/.gitconfig: .gitconfig
     ~/.zshrc: .zshrc
     ~/.config/ghostty: .config/ghostty
+    ~/.config/worktrunk: .config/worktrunk
     ~/.config/nvim: .config/nvim
     ~/.agents/AGENTS.md: .agents/AGENTS.md
     ~/.agents/skills: .agents/skills
