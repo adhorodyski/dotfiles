@@ -12,16 +12,18 @@ dotbot -c install.conf.yaml
 
 ## Platforms
 
-macOS ([Homebrew](https://brew.sh/)), Arch (pacman), and Debian (apt).
+- macOS ([Homebrew](https://brew.sh/))
+- Arch (pacman) 
+- Debian (apt)
 
 ## Tools
 
 Terminal: [Ghostty](https://ghostty.org/)
 
-Editor: [Neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/) and [Catppuccin](https://catppuccin.com/)
+Editor: [Neovim](https://neovim.io/), [LazyVim](https://www.lazyvim.org/), [Catppuccin](https://catppuccin.com/)
 
-Shell: [Zsh](https://formulae.brew.sh/formula/zsh) with [Oh my Zsh](https://ohmyz.sh/) and the [minimal](https://github.com/subnixr/minimal) theme
+Shell: [Zsh](https://formulae.brew.sh/formula/zsh), [Oh my Zsh](https://ohmyz.sh/), [minimal](https://github.com/subnixr/minimal)
 
-Git: [delta](https://github.com/dandavison/delta) and [worktrunk](https://github.com/max-sixty/worktrunk)
+Git: [delta](https://github.com/dandavison/delta), [worktrunk](https://github.com/max-sixty/worktrunk)
 
 Node: [fnm](https://github.com/Schniz/fnm)
