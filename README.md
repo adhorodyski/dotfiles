@@ -18,11 +18,13 @@ dotbot -c install.conf.yaml
 
 ## Tools
 
+<img width="1392" height="734" alt="Screenshot 2026-06-02 at 13 49 22" src="https://github.com/user-attachments/assets/2a28670f-f1b9-47fe-b68e-cec7a6d0f385" />
+
 Terminal: [Ghostty](https://ghostty.org/)
 
-Editor: [Neovim](https://neovim.io/), [LazyVim](https://www.lazyvim.org/), [Zenbones](https://github.com/zenbones-theme/zenbones.nvim)
-
 Shell: [Zsh](https://formulae.brew.sh/formula/zsh), [Oh my Zsh](https://ohmyz.sh/), [minimal](https://github.com/subnixr/minimal)
+
+Editor: [Neovim](https://neovim.io/), [LazyVim](https://www.lazyvim.org/), [Zenbones](https://github.com/zenbones-theme/zenbones.nvim)
 
 Git: [delta](https://github.com/dandavison/delta), [worktrunk](https://github.com/max-sixty/worktrunk)
 
