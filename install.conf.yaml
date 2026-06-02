@@ -20,7 +20,7 @@
 
 - shell:
   - command: ./scripts/bootstrap.sh
-    description: install packages, oh-my-zsh with addons
+    description: install packages, zsh prompt and plugins
     stdin: true
     stdout: true
     stderr: true

@@ -22,7 +22,7 @@ dotbot -c install.conf.yaml
 
 Terminal: [Ghostty](https://ghostty.org/)
 
-Shell: [Zsh](https://formulae.brew.sh/formula/zsh), [Oh my Zsh](https://ohmyz.sh/), [minimal](https://github.com/subnixr/minimal)
+Shell: [Zsh](https://formulae.brew.sh/formula/zsh), [minimal](https://github.com/subnixr/minimal), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
 Editor: [Neovim](https://neovim.io/), [LazyVim](https://www.lazyvim.org/), [Zenbones](https://github.com/zenbones-theme/zenbones.nvim)
 
