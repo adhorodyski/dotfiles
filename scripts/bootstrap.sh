@@ -13,7 +13,7 @@
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+ZSH_DIR="${ZSH_DIR:-$HOME/.zsh}"
 
 # --- output helpers ---------------------------------------------------------
 info() { printf '  ▸ %s\n' "$1"; }
@@ -64,29 +64,17 @@ install_packages() {
   fi
 }
 
-# --- oh-my-zsh + custom theme/plugins --------------------------------------
-install_omz() {
-  if [ -d "$HOME/.oh-my-zsh" ]; then
-    success "oh-my-zsh present"
-  else
-    info "install: oh-my-zsh"
-    # KEEP_ZSHRC: leave ~/.zshrc alone (dotbot symlinks it)
-    # RUNZSH/CHSH=no: don't launch a shell or change the login shell here
-    KEEP_ZSHRC=yes RUNZSH=no CHSH=no \
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  fi
-}
-
-install_omz_assets() {
-  clone https://github.com/subnixr/minimal "$ZSH_CUSTOM/themes/minimal"
-  clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
-  clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+# --- zsh prompt + plugins (no framework) -----------------------------------
+# Sourced directly by .zshrc from ~/.zsh — see that file for load order.
+install_zsh_assets() {
+  clone https://github.com/subnixr/minimal "$ZSH_DIR/themes/minimal"
+  clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_DIR/plugins/zsh-autosuggestions"
+  clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_DIR/plugins/zsh-syntax-highlighting"
 }
 
 main() {
   install_packages
-  install_omz
-  install_omz_assets
+  install_zsh_assets
   success "bootstrap: done"
 }
 
