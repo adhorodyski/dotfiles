@@ -18,6 +18,7 @@ ZSH_DIR="${ZSH_DIR:-$HOME/.zsh}"
 # --- output helpers ---------------------------------------------------------
 info() { printf '  ▸ %s\n' "$1"; }
 success() { printf '  ✔ %s\n' "$1"; }
+warn() { printf '  ! %s\n' "$1" >&2; }
 
 _exists() { command -v "$1" >/dev/null 2>&1; }
 
@@ -32,35 +33,56 @@ clone() {
 }
 
 # --- package installers -----------------------------------------------------
+# Best-effort: a blocked sudo or unavailable package is logged, not fatal.
+# brew bundle handles partial failure itself; pacman/apt are atomic, so we feed
+# them one package at a time.
+
+# install each package listed in file $1 via command "$2..."; log failures
+install_each() {
+  local file="$1"
+  shift
+  local pkg failed=()
+  while IFS= read -r pkg; do
+    case "$pkg" in ''|\#*) continue ;; esac
+    "$@" "$pkg" || failed+=("$pkg")
+  done < "$file"
+  local f
+  for f in "${failed[@]+"${failed[@]}"}"; do
+    warn "could not install: $f — please add it manually"
+  done
+}
+
 pacman_install() {
-  sudo pacman -S --needed --noconfirm $(grep -v '^#' "$1")
+  install_each "$1" sudo pacman -S --needed --noconfirm
 }
 
 apt_install() {
-  sudo apt-get update
-  sudo apt-get install -y $(grep -v '^#' "$1")
+  sudo apt-get update || warn "apt-get update failed — continuing with cached index"
+  install_each "$1" sudo apt-get install -y
 }
 
 install_packages() {
   if [ "$(uname -s)" = "Darwin" ]; then
-    _exists brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    _exists brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+      || { warn "brew install failed — skipping packages"; return 0; }
     info "[brew bundle]"
-    brew bundle --file="$DOTFILES/Brewfile"
-    return
+    brew bundle --file="$DOTFILES/Brewfile" \
+      || warn "some brew packages failed — see above; continuing"
+    return 0
   fi
 
   if _exists pacman; then
     info "[pacman install]"
     pacman_install "$DOTFILES/pkglist.pacman.txt"
     info "not in repos — add these manually: fnm"
-    return
+    return 0
   fi
 
   if _exists apt-get; then
     info "[apt install]"
     apt_install "$DOTFILES/pkglist.apt.txt"
     info "not in apt — add these manually: gh, ghostty, fnm, worktrunk"
-    return
+    return 0
   fi
 }
 
