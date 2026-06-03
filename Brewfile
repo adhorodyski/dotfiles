@@ -1,4 +1,3 @@
-brew 'dotbot'
 brew 'fnm'
 brew 'gh'
 brew 'git'

@@ -2,12 +2,12 @@
 
 ## Prerequisites
 
-[git](https://git-scm.com/) and [dotbot](https://github.com/anishathalye/dotbot).
+[git](https://git-scm.com/) installed.
 
-Clone this repository, then use  `dotbot` to install:
+Clone this repository, then run:
 
 ```sh
-dotbot -c install.conf.yaml
+./install
 ```
 
 ## Platforms
