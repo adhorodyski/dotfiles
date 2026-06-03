@@ -1,6 +1,5 @@
 zsh
 git
-zsh
 neovim
 ripgrep
 git-delta
