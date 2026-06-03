@@ -30,7 +30,7 @@ export PATH="$HOME/.local/bin:$PATH"
 alias g="git"
 alias cop="copilot"
 
-eval "$(fnm env)"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # worktrunk
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
