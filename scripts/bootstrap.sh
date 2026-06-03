@@ -6,7 +6,6 @@
 #
 # Package source by platform:
 #   macOS          -> brew bundle (Brewfile)
-#   Arch family    -> pacman      (pkglist.pacman.txt)
 #   Debian family  -> apt-get     (pkglist.apt.txt)
 # Packages a manager can't provide are logged for manual install.
 
@@ -34,8 +33,8 @@ clone() {
 
 # --- package installers -----------------------------------------------------
 # Best-effort: a blocked sudo or unavailable package is logged, not fatal.
-# brew bundle handles partial failure itself; pacman/apt are atomic, so we feed
-# them one package at a time.
+# brew bundle handles partial failure itself; apt is atomic, so we feed it one
+# package at a time.
 
 # install each package listed in file $1 via command "$2..."; log failures
 install_each() {
@@ -52,10 +51,6 @@ install_each() {
   done
 }
 
-pacman_install() {
-  install_each "$1" sudo pacman -S --needed --noconfirm
-}
-
 apt_install() {
   sudo apt-get update || warn "apt-get update failed — continuing with cached index"
   install_each "$1" sudo apt-get install -y
@@ -68,13 +63,6 @@ install_packages() {
     info "[brew bundle]"
     brew bundle --file="$DOTFILES/Brewfile" \
       || warn "some brew packages failed — see above; continuing"
-    return 0
-  fi
-
-  if _exists pacman; then
-    info "[pacman install]"
-    pacman_install "$DOTFILES/pkglist.pacman.txt"
-    info "not in repos — add these manually: fnm"
     return 0
   fi
 

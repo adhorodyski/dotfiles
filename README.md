@@ -13,7 +13,6 @@ dotbot -c install.conf.yaml
 ## Platforms
 
 - macOS ([Homebrew](https://brew.sh/))
-- Arch (pacman)
 - Debian (apt)
 
 ## Tools
