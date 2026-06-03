@@ -8,6 +8,7 @@
 
 - link:
     ~/.gitconfig: .gitconfig
+    ~/.zprofile: .zprofile
     ~/.zshrc: .zshrc
     ~/.config/ghostty: .config/ghostty
     ~/.config/worktrunk: .config/worktrunk
