@@ -1,4 +1,3 @@
-brew 'cocoapods'
 brew 'dotbot'
 brew 'fnm'
 brew 'gh'
@@ -8,6 +7,11 @@ brew 'gnupg'
 brew 'neovim'
 brew 'ripgrep'
 brew 'tree'
-brew 'watchman'
 brew 'worktrunk'
+
+# React Native
+brew 'cocoapods'
+brew 'rbenv'
+brew 'watchman'
+
 cask 'ghostty'
