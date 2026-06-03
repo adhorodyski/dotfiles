@@ -1,0 +1,26 @@
+# Mellifluous (light)
+# Generated straight from mellifluous.nvim's light colorset + terminal.lua mapping
+# (https://github.com/ramojus/mellifluous.nvim), using its OkHSL/OkLCH color pipeline.
+# neutral = true. palette 0=bg, 7=fg4, 8=bg2, 15=fg2; brights = accent:lightened(16).
+# Note: the colorset defines no cyan, so palette 6/14 fall back to blue (upstream behavior).
+
+foreground = #1b1b1b
+background = #e7e7e7
+cursor-color = #1b1b1b
+
+palette = 0=#e7e7e7
+palette = 1=#b73242
+palette = 2=#63611e
+palette = 3=#9c792a
+palette = 4=#5a418a
+palette = 5=#863e7f
+palette = 6=#5a418a
+palette = 7=#919191
+palette = 8=#f2f2f2
+palette = 9=#e8606a
+palette = 10=#8b8a49
+palette = 11=#c8a357
+palette = 12=#826ab6
+palette = 13=#b267aa
+palette = 14=#826ab6
+palette = 15=#414141

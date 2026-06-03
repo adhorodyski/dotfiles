@@ -1,5 +1,6 @@
 #theme = dark:Catppuccin Macchiato,light: Catppuccin Latte
-theme = dark:Zenwritten Dark,light: Zenwritten Light
+theme = dark:Mellifluous,light: Mellifluous Light
+#theme = dark:Zenwritten Dark,light: Zenwritten Light
 font-family = FiraCode Nerd Font Mono
 font-size = 18
 font-thicken = true
