@@ -4,10 +4,8 @@
 # dotbot does the symlinking; this only installs/clones.
 # Safe to re-run: every step is guarded.
 #
-# Package source by platform:
-#   macOS          -> brew bundle (Brewfile)
-#   Debian family  -> apt-get     (pkglist.apt.txt)
-# Packages a manager can't provide are logged for manual install.
+# Package source: Homebrew on both platforms (brew bundle + Brewfile).
+# On Debian/Ubuntu, brew's build prerequisites are installed via apt first.
 
 set -euo pipefail
 
@@ -32,46 +30,43 @@ clone() {
 }
 
 # --- package installers -----------------------------------------------------
-# Best-effort: a blocked sudo or unavailable package is logged, not fatal.
-# brew bundle handles partial failure itself; apt is atomic, so we feed it one
-# package at a time.
+# Best-effort: a blocked sudo or failed package is logged, not fatal.
+# brew bundle handles partial failure itself.
 
-# install each package listed in file $1 via command "$2..."; log failures
-install_each() {
-  local file="$1"
-  shift
-  local pkg failed=()
-  while IFS= read -r pkg; do
-    case "$pkg" in ''|\#*) continue ;; esac
-    "$@" "$pkg" || failed+=("$pkg")
-  done < "$file"
-  local f
-  for f in "${failed[@]+"${failed[@]}"}"; do
-    warn "could not install: $f — please add it manually"
-  done
-}
-
-apt_install() {
+# Homebrew build prerequisites on Debian/Ubuntu. brew compiles formulae against
+# a system toolchain, so these must exist before the installer runs. Fixed
+# one-time list; `apt-get install` is idempotent for packages already present.
+apt_prereqs() {
   sudo apt-get update || warn "apt-get update failed — continuing with cached index"
-  install_each "$1" sudo apt-get install -y
+  sudo apt-get install -y build-essential procps curl file git \
+    || warn "could not install some Homebrew prerequisites — brew install may fail"
 }
 
 install_packages() {
-  if [ "$(uname -s)" = "Darwin" ]; then
-    _exists brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
-      || { warn "brew install failed — skipping packages"; return 0; }
-    info "[brew bundle]"
-    brew bundle --file="$DOTFILES/Brewfile" \
-      || warn "some brew packages failed — see above; continuing"
-    return 0
+  if [ "$(uname -s)" != "Darwin" ] && _exists apt-get; then
+    info "[apt: Homebrew prerequisites]"
+    apt_prereqs
   fi
 
-  if _exists apt-get; then
-    info "[apt install]"
-    apt_install "$DOTFILES/pkglist.apt.txt"
-    info "not in apt — add these manually: gh, ghostty, fnm, worktrunk"
-    return 0
+  if ! _exists brew; then
+    info "installing Homebrew"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+      || { warn "brew install failed — skipping packages"; return 0; }
   fi
+
+  # Load brew into this non-interactive shell — .zprofile isn't sourced here, so
+  # a freshly-installed brew won't be on PATH yet.
+  local b
+  for b in /opt/homebrew/bin/brew /usr/local/bin/brew \
+           /home/linuxbrew/.linuxbrew/bin/brew "$HOME/.linuxbrew/bin/brew"; do
+    [ -x "$b" ] && eval "$("$b" shellenv)" && break
+  done
+
+  _exists brew || { warn "brew not on PATH after install — skipping packages"; return 0; }
+
+  info "[brew bundle]"
+  brew bundle --file="$DOTFILES/Brewfile" \
+    || warn "some brew packages failed — see above; continuing"
 }
 
 # --- zsh prompt + plugins (no framework) -----------------------------------

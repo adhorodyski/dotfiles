@@ -3,7 +3,8 @@
 
 # Brew (macOS only — no-ops anywhere brew isn't installed). Runs after
 # /etc/zprofile's path_helper, so its PATH prepend wins.
-for b in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+for b in /opt/homebrew/bin/brew /usr/local/bin/brew \
+         /home/linuxbrew/.linuxbrew/bin/brew "$HOME/.linuxbrew/bin/brew"; do
   [ -x "$b" ] && eval "$("$b" shellenv)" && break
 done
 

@@ -12,8 +12,7 @@ Clone this repository, then run:
 
 ## Platforms
 
-- macOS ([Homebrew](https://brew.sh/))
-- Debian (apt)
+macOS and Debian / Ubuntu, provisioned with [Homebrew](https://brew.sh/).
 
 ## Tools
 
