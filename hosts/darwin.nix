@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
