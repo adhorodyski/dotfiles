@@ -27,6 +27,7 @@
     shellAliases = {
       g = "git";
       cop = "copilot";
+      nix-rebuild = "sudo darwin-rebuild switch --flake $HOME/Developer/dotfiles#mac";
     };
     # Login-shell env (.zprofile). brew first so its PATH prepend wins after
     # /etc/zprofile's path_helper; rbenv after, since it's brew-installed.
