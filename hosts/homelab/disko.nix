@@ -1,0 +1,49 @@
+{ ... }:
+
+{
+  disko.devices.disk = {
+    ssd = {
+      device = "/dev/disk/by-id/REPLACE-ssd";
+      type = "disk";
+      content = {
+        type = "gpt";
+        partitions = {
+          ESP = {
+            type = "EF00";
+            size = "512M";
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
+              mountOptions = [ "umask=0077" ];
+            };
+          };
+          root = {
+            size = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
+            };
+          };
+        };
+      };
+    };
+
+    hdd = {
+      device = "/dev/disk/by-id/REPLACE-hdd";
+      type = "disk";
+      content = {
+        type = "gpt";
+        partitions.data = {
+          size = "100%";
+          content = {
+            type = "filesystem";
+            format = "ext4";
+            mountpoint = "/data";
+          };
+        };
+      };
+    };
+  };
+}
