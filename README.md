@@ -25,10 +25,6 @@ sudo ./result/sw/bin/darwin-rebuild switch --flake .#mac
 
 Subsequent rebuilds use the `nix-rebuild` alias.
 
-## Platforms
-
-- macOS
-
 ## Tools
 
 Terminal: [Ghostty](https://ghostty.org/)
