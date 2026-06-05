@@ -16,7 +16,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    HOMEBREW_DOWNLOAD_CONCURRENCY = "auto";
+    LANG = "en_US.UTF-8";
   };
   home.sessionPath = [ "$HOME/.local/bin" ];
 
