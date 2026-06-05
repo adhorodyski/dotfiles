@@ -8,8 +8,10 @@
     shellAliases = {
       g = "git";
       cop = "copilot";
-    } // lib.optionalAttrs pkgs.stdenv.isDarwin {
-      nix-rebuild = "sudo darwin-rebuild switch --flake $HOME/Developer/dotfiles#mac";
+      nix-rebuild =
+        if pkgs.stdenv.isDarwin
+        then "sudo darwin-rebuild switch --flake $HOME/Developer/dotfiles#darwin"
+        else "sudo nixos-rebuild switch --flake $HOME/Developer/dotfiles#nixos";
     };
     profileExtra = lib.optionalString pkgs.stdenv.isDarwin ''
       for b in /opt/homebrew/bin/brew /usr/local/bin/brew; do

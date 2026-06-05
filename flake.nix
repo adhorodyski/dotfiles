@@ -13,7 +13,7 @@
 
   outputs = { self, nixpkgs, home-manager, nix-darwin, disko, ... }: {
 
-    darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."darwin" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
         ./hosts/darwin.nix
@@ -27,11 +27,11 @@
       ];
     };
 
-    nixosConfigurations."homelab" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         disko.nixosModules.disko
-        ./hosts/homelab
+        ./hosts/nixos
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

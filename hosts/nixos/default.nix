@@ -12,7 +12,7 @@
 
   hardware.enableRedistributableFirmware = true;
 
-  networking.hostName = "homelab";
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   users.users.adhorodyski = {
