@@ -1,5 +1,13 @@
 # dotfiles
 
+## Prerequisites
+
+`nix`. On NixOS it comes preinstalled; otherwise install it with:
+
+```sh
+sh <(curl -L https://nixos.org/nix/install) --daemon
+```
+
 ## Usage
 
 1. Clone this repository
@@ -8,13 +16,7 @@
 git clone https://github.com/adhorodyski/dotfiles.git ~/Developer/dotfiles
 ```
 
-2. Install `nix`
-
-```sh
-sh <(curl -L https://nixos.org/nix/install) --daemon
-```
-
-3. Build and activate
+2. Build and activate
 
 **macOS** (`nix-darwin`):
 
