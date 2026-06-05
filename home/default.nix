@@ -99,6 +99,12 @@
     };
   };
 
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    extraOptions = [ "--no-user" "--no-time" "--git-ignore" ];
+  };
+
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/Developer/dotfiles/.config/nvim";
