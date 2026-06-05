@@ -39,7 +39,6 @@
 
       command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash zsh)"
     '';
-    # initContent replaces the removed initExtra on 26.05 (default order 1000).
     initContent = ''
       eval "$(fnm env --use-on-cd --shell zsh)"
 
@@ -68,8 +67,6 @@
       key = "EAEF5DA3FA0AB923";
       signByDefault = true;
     };
-    # settings is the freeform gitconfig (replaces userName/userEmail/aliases/
-    # extraConfig, all merged here as of 26.05).
     settings = {
       user.name = "Adam Horodyski";
       user.email = "ad.horodyski@gmail.com";
@@ -89,8 +86,6 @@
     };
   };
 
-  # delta is its own module now (was programs.git.delta). enableGitIntegration
-  # wires it in as core.pager — without it, 26.05 no longer does so automatically.
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
@@ -113,10 +108,6 @@
   xdg.configFile."ghostty/config".source = ./../.config/ghostty/config.ghostty;
   xdg.configFile."worktrunk/config.toml".source = ./../.config/worktrunk/config.toml;
 
-  # Agent CLI config. This repo's .agents/ is the single source of truth, fanned
-  # out to each CLI. .agents/skills feeds Copilot + Gemini; Claude Code reads
-  # ~/.claude/skills only, so grill-me is linked per-skill to avoid clobbering
-  # machine-local Claude skills.
   home.file.".agents/AGENTS.md".source = ./../.agents/AGENTS.md;
   home.file.".agents/skills".source = ./../.agents/skills;
   home.file.".claude/CLAUDE.md".source = ./../.claude/CLAUDE.md;
