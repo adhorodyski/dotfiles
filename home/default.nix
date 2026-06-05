@@ -12,6 +12,7 @@
     gh
     fnm
     worktrunk
+    mkcert
   ];
 
   home.sessionVariables = {
