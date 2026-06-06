@@ -17,4 +17,9 @@
     enableZshIntegration = true;
     extraOptions = [ "--no-user" "--no-time" "--git-ignore" ];
   };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }
