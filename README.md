@@ -2,21 +2,17 @@
 
 ## Prerequisites
 
-`nix`. On NixOS it comes preinstalled; otherwise install it with:
+This project uses [`nix`](https://nix.dev/). It comes preinstalled on NixOS, otherwise install it following [these guides](https://nix.dev/install-nix#install-nix).
 
-```sh
-sh <(curl -L https://nixos.org/nix/install) --daemon
-```
+## Getting started
 
-## Usage
-
-1. Clone this repository
+### 1. Clone this repository
 
 ```sh
 git clone https://github.com/adhorodyski/dotfiles.git ~/Developer/dotfiles
 ```
 
-2. Build and activate
+### 2. Build and activate
 
 **macOS** (`nix-darwin`):
 
@@ -27,15 +23,7 @@ nix --extra-experimental-features "nix-command flakes" \
 sudo ./result/sw/bin/darwin-rebuild switch --flake .#darwin
 ```
 
-**NixOS** (`nixos`) — on an already-running system:
-
-```sh
-cd ~/Developer/dotfiles
-sudo nixos-rebuild switch --flake .#nixos
-```
-
-First install — from the NixOS live ISO, over Ethernet. Set the real `by-id`
-paths in `hosts/nixos/disko.nix` first; **this wipes those disks**:
+**NixOS** (`nix-nixos`):
 
 ```sh
 cd ~/Developer/dotfiles
@@ -45,7 +33,9 @@ sudo nixos-generate-config --no-filesystems --root /mnt   # copy result into hos
 sudo nixos-install --flake .#nixos
 ```
 
-Subsequent rebuilds use the `nix-rebuild` alias.
+## Rebuilds
+
+Use the `nix-rebuild` alias.
 
 ## Tools
 
