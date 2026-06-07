@@ -32,6 +32,9 @@
   # GPU (Intel HD 4000 / Mesa — no proprietary driver).
   hardware.graphics.enable = true;
 
+  # Fonts (FiraCode Nerd Font Mono for the terminal/shell).
+  fonts.packages = [ pkgs.nerd-fonts.fira-code ];
+
   # Backend services for Noctalia applets.
   # (NetworkManager is already enabled in modules/nixos/base.nix.)
   hardware.bluetooth.enable = true;
