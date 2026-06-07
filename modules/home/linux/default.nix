@@ -1,10 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  # niri compositor settings (KDL-as-nix). The niri home module is auto-injected
-  # by niri.nixosModules.niri, which exposes `programs.niri.settings` here; niri
-  # itself is enabled at the system level (modules/nixos/desktop.nix). Do NOT set
-  # `programs.niri.enable` here — that option is not declared on the home side.
+  # `programs.niri.enable` lives at the system level (modules/nixos/desktop.nix);
+  # that nixosModule injects this HM module, which exposes only `settings`.
   programs.niri.settings = {
     prefer-no-csd = true;
     input.keyboard.xkb.layout = "us";
@@ -25,14 +23,9 @@
     };
   };
 
-  # Noctalia desktop shell (settings left default — first-run wizard handles theming).
   programs.noctalia-shell.enable = true;
 
-  # Ghostty terminal, with the GL version override scoped to Ghostty only.
-  # Intel HD 4000 reports GL 4.2; Ghostty requires 4.3. The wrapper makes Mesa
-  # report 4.3 for Ghostty alone, leaving other GL apps to see the real 4.2.
-  # This module is mini-only today (it is the sole Linux host); if a Linux host
-  # without this quirk is added later, guard this override.
+  # GL override for Intel HD 4000 (reports 4.2; Ghostty needs 4.3).
   programs.ghostty = {
     enable = true;
     package = pkgs.symlinkJoin {
