@@ -14,23 +14,23 @@ git clone https://github.com/adhorodyski/dotfiles.git ~/Developer/dotfiles
 
 ### 2. Build and activate
 
-**macOS** (`nix-darwin`):
+**macOS** (`nix-darwin`) `macbook`:
 
 ```sh
 cd ~/Developer/dotfiles
 nix --extra-experimental-features "nix-command flakes" \
-  build .#darwinConfigurations.darwin.system
-sudo ./result/sw/bin/darwin-rebuild switch --flake .#darwin
+  build .#darwinConfigurations.macbook.system
+sudo ./result/sw/bin/darwin-rebuild switch --flake .#macbook
 ```
 
-**NixOS** (`nix-nixos`):
+**NixOS** `mini`:
 
 ```sh
 cd ~/Developer/dotfiles
 sudo nix --experimental-features "nix-command flakes" run \
-  github:nix-community/disko -- --mode destroy,format,mount ./hosts/nixos/disko.nix
-sudo nixos-generate-config --no-filesystems --root /mnt   # copy result into hosts/nixos/hardware.nix
-sudo nixos-install --flake .#nixos
+  github:nix-community/disko -- --mode destroy,format,mount ./hosts/mini/disko.nix
+sudo nixos-generate-config --no-filesystems --root /mnt   # copy result into hosts/mini/hardware.nix
+sudo nixos-install --flake .#mini
 ```
 
 ## Rebuilds

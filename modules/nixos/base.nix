@@ -1,18 +1,12 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./hardware.nix
-    ./disko.nix
-  ];
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.enableRedistributableFirmware = true;
 
-  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   users.users.adhorodyski = {
@@ -21,8 +15,6 @@
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
-  zramSwap.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "26.05";
 }

@@ -11,35 +11,37 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, disko, ... }: {
+  outputs = { self, nixpkgs, home-manager, nix-darwin, disko, ... }:
+    let
+      mkHome = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "bak";
+        home-manager.users.adhorodyski = import ./modules/home;
+      };
 
-    darwinConfigurations."darwin" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        ./hosts/darwin.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "bak";
-          home-manager.users.adhorodyski = import ./home/default.nix;
-        }
-      ];
-    };
+      mkNixos = host: nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          disko.nixosModules.disko
+          ./hosts/${host}
+          ./modules/nixos
+          home-manager.nixosModules.home-manager
+          mkHome
+        ];
+      };
 
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        disko.nixosModules.disko
-        ./hosts/nixos
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "bak";
-          home-manager.users.adhorodyski = import ./home/default.nix;
-        }
-      ];
+      mkDarwin = host: nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./hosts/${host}
+          home-manager.darwinModules.home-manager
+          mkHome
+        ];
+      };
+    in
+    {
+      darwinConfigurations."macbook" = mkDarwin "macbook";
+      nixosConfigurations."mini" = mkNixos "mini";
     };
-  };
 }
