@@ -6,12 +6,9 @@
 
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, disko, ... }:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, ... }:
     let
       mkHome = {
         home-manager.useGlobalPkgs = true;
@@ -23,7 +20,6 @@
       mkNixos = host: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          disko.nixosModules.disko
           ./hosts/${host}
           ./modules/nixos
           home-manager.nixosModules.home-manager
