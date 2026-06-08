@@ -27,9 +27,8 @@ sudo ./result/sw/bin/darwin-rebuild switch --flake .#macbook
 
 ```sh
 cd ~/Developer/dotfiles
-sudo nix --experimental-features "nix-command flakes" run \
-  github:nix-community/disko -- --mode destroy,format,mount ./hosts/mini/disko.nix
-sudo nixos-generate-config --no-filesystems --root /mnt   # copy result into hosts/mini/hardware.nix
+sudo nixos-generate-config --root /mnt
+cp /mnt/etc/nixos/hardware-configuration.nix hosts/mini/hardware.nix
 sudo nixos-install --flake .#mini
 ```
 
