@@ -5,6 +5,15 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    completionInit = ''
+      autoload -Uz compinit
+      local -a zcompdump=(~/.zcompdump(Nmh-24))
+      if (( $#zcompdump )); then
+        compinit -C
+      else
+        compinit
+      fi
+    '';
     shellAliases = {
       g = "git";
       cop = "copilot";
