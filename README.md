@@ -4,6 +4,8 @@
 
 This project uses [`nix`](https://nix.dev/). It comes preinstalled on NixOS, otherwise install it following [these guides](https://nix.dev/install-nix#install-nix).
 
+If you want to run NixOS, this guide assumes it's preinstalled with a GUI installer ISO.
+
 ## Getting started
 
 ### 1. Clone this repository
@@ -27,9 +29,8 @@ sudo ./result/sw/bin/darwin-rebuild switch --flake .#macbook
 
 ```sh
 cd ~/Developer/dotfiles
-sudo nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/hardware-configuration.nix hosts/mini/hardware.nix
-sudo nixos-install --flake .#mini
+cp /etc/nixos/hardware-configuration.nix hosts/mini/hardware.nix
+sudo nixos-rebuild switch --flake .#mini
 ```
 
 ## Rebuilds
