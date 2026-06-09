@@ -19,6 +19,14 @@
       "Mod+Q".action = close-window;
       "Mod+H".action = focus-column-left;
       "Mod+L".action = focus-column-right;
+      "Mod+J".action = focus-workspace-down;
+      "Mod+K".action = focus-workspace-up;
+      "Mod+Shift+J".action = move-column-to-workspace-down;
+      "Mod+Shift+K".action = move-column-to-workspace-up;
+      "Mod+1".action = focus-workspace 1;
+      "Mod+2".action = focus-workspace 2;
+      "Mod+3".action = focus-workspace 3;
+      "Mod+4".action = focus-workspace 4;
       "Mod+Shift+E".action = quit;
     };
   };
