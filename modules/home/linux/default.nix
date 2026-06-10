@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./firefox.nix
+  ];
+
   # `programs.niri.enable` lives at the system level (modules/nixos/desktop.nix);
   # that nixosModule injects this HM module, which exposes only `settings`.
   programs.niri.settings = {
@@ -32,8 +36,6 @@
   };
 
   programs.noctalia-shell.enable = true;
-
-  programs.firefox.enable = true;
 
   # GL override for Intel HD 4000 (reports 4.2; Ghostty needs 4.3).
   programs.ghostty = {

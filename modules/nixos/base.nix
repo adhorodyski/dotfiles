@@ -11,13 +11,10 @@
 
   users.users.adhorodyski = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
-
-  virtualisation.docker.enable = true;
-  environment.systemPackages = [ pkgs.docker-compose ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
