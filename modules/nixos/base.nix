@@ -17,6 +17,7 @@
   programs.zsh.enable = true;
 
   virtualisation.docker.enable = true;
+  environment.systemPackages = [ pkgs.docker-compose ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
