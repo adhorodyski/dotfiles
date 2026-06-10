@@ -6,6 +6,7 @@
     ./git.nix
     ./editor.nix
     ./cli.nix
+    ./trackpad.nix
     ./dotfiles.nix
   ];
 
