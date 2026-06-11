@@ -6,8 +6,8 @@
   boot.loader.timeout = 0;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [
-    "quiet",
-    "splash",
+    "quiet"
+    "splash"
     "loglevel=3"
     "rd.systemd.show_status=false"
     "rd.udev.log_level=3"
