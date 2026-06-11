@@ -10,6 +10,11 @@
   zramSwap.enable = true;
   system.stateVersion = "26.05";
 
+  hardware.bluetooth = {
+    enable = true;
+    input.General.ClassicBondedOnly = false;
+  };
+
   systemd.targets.sleep.enable = false;
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
