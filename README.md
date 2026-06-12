@@ -11,7 +11,7 @@ If you want to run NixOS, this guide assumes it's preinstalled with a GUI instal
 ### 1. Clone this repository
 
 ```sh
-git clone https://github.com/adhorodyski/dotfiles.git ~/Developer/dotfiles
+git clone https://github.com/adhorodyski/dotfiles.git ~/dotfiles
 ```
 
 ### 2. Build and activate
@@ -19,7 +19,7 @@ git clone https://github.com/adhorodyski/dotfiles.git ~/Developer/dotfiles
 **macOS** (`nix-darwin`) `macbook`:
 
 ```sh
-cd ~/Developer/dotfiles
+cd ~/dotfiles
 nix --extra-experimental-features "nix-command flakes" \
   build .#darwinConfigurations.macbook.system
 sudo ./result/sw/bin/darwin-rebuild switch --flake .#macbook
@@ -28,7 +28,7 @@ sudo ./result/sw/bin/darwin-rebuild switch --flake .#macbook
 **NixOS** `mini`:
 
 ```sh
-cd ~/Developer/dotfiles
+cd ~/dotfiles
 cp /etc/nixos/hardware-configuration.nix hosts/mini/hardware.nix
 sudo nixos-rebuild switch --flake .#mini
 ```

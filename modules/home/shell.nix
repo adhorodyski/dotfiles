@@ -19,8 +19,8 @@
       cop = "copilot";
       nix-rebuild =
         if pkgs.stdenv.isDarwin
-        then "sudo darwin-rebuild switch --flake $HOME/Developer/dotfiles#macbook"
-        else "sudo nixos-rebuild switch --flake $HOME/Developer/dotfiles#mini";
+        then "sudo darwin-rebuild switch --flake $HOME/dotfiles#macbook"
+        else "sudo nixos-rebuild switch --flake $HOME/dotfiles#mini";
     };
     profileExtra = lib.optionalString pkgs.stdenv.isDarwin ''
       for b in /opt/homebrew/bin/brew /usr/local/bin/brew; do
