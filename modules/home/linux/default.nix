@@ -12,8 +12,21 @@
     input.keyboard.xkb.layout = "us";
     layout = {
       gaps = 8;
-      focus-ring.enable = true;
+      focus-ring.enable = false;
+      border.enable = true;
+      border.width = 2;
     };
+    window-rules = [ 
+      {
+        clip-to-geometry = true;
+        geometry-corner-radius = {
+          top-left = 12.0;
+          top-right = 12.0;
+          bottom-right = 12.0;
+          bottom-left = 12.0;
+        }; 
+      }
+    ];
     spawn-at-startup = [
       { command = [ "noctalia-shell" ]; }
     ];
