@@ -33,7 +33,10 @@
   hardware.graphics.enable = true;
 
   # Fonts (FiraCode Nerd Font Mono for the terminal/shell).
-  fonts.packages = [ pkgs.nerd-fonts.fira-code ];
+  fonts.packages = [
+    pkgs.nerd-fonts.fira-code
+    pkgs.inter
+  ];
 
   # Backend services for Noctalia applets.
   # (NetworkManager is already enabled in modules/nixos/base.nix.)
