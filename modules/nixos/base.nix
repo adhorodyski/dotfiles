@@ -29,5 +29,8 @@
   };
   programs.zsh.enable = true;
 
+  # Lets prebuilt binaries run, e.g. the tree-sitter CLI
+  programs.nix-ld.enable = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
