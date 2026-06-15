@@ -28,6 +28,12 @@
       done
 
       command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash zsh)"
+
+      if [ -d "$HOME/Library/Android/sdk" ]; then
+        export ANDROID_HOME="$HOME/Library/Android/sdk"
+        export ANDROID_SDK_ROOT="$ANDROID_HOME"
+        export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+      fi
     '';
     initContent = ''
       eval "$(fnm env --use-on-cd --shell zsh)"
