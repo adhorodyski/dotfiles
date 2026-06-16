@@ -8,4 +8,5 @@
   home.file.".agents/skills".source = ./../../.agents/skills;
   home.file.".claude/CLAUDE.md".source = ./../../.claude/CLAUDE.md;
   home.file.".claude/skills/grill-me".source = ./../../.agents/skills/grill-me;
+  home.file.".claude/skills/caveman".source = ./../../.agents/skills/caveman;
 }
