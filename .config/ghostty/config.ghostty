@@ -1,6 +1,5 @@
-#theme = dark:Catppuccin Macchiato,light: Catppuccin Latte
 theme = dark:Zenwritten Dark,light: Zenwritten Light
-font-family = FiraCode Nerd Font Mono
+font-family = JetBrains Mono
 font-size = 18
 font-thicken = true
 font-thicken-strength = 0
@@ -8,7 +7,7 @@ adjust-cell-height = 20%
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
 window-colorspace = "display-p3"
-background-opacity = 0.96
+background-opacity = 0.94
 background-blur = true
 window-decoration = true
 window-padding-x = 20
