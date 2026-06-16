@@ -14,9 +14,12 @@
 
     noctalia.url = "github:noctalia-dev/noctalia-shell";
     noctalia.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
+    noctalia-greeter.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, niri, noctalia, ... }:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, ... }:
     let
       mkHome = sharedModules: {
         home-manager.useGlobalPkgs = true;
@@ -32,6 +35,7 @@
           ./hosts/${host}
           ./modules/nixos
           niri.nixosModules.niri
+          noctalia-greeter.nixosModules.default
           home-manager.nixosModules.home-manager
           (mkHome [
             noctalia.homeModules.default

@@ -5,14 +5,7 @@
   # polkit/session integration, and auto-enables niri's Cachix binary cache).
   programs.niri.enable = true;
 
-  # Login: greetd + tuigreet, launching the niri session.
-  services.greetd = {
-    enable = true;
-    settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
-      user = "greeter";
-    };
-  };
+  programs.noctalia-greeter.enable = true;
 
   # Audio.
   security.rtkit.enable = true;
