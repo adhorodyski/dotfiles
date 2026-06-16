@@ -9,6 +9,8 @@
     casks = [ "ghostty" ];
   };
 
+  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+
   programs.zsh.enable = true;
 
   users.users.adhorodyski.home = "/Users/adhorodyski";
