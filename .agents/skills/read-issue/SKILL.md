@@ -23,7 +23,7 @@ Build a full mental model of a GitHub issue so the work that follows has every f
    gh api repos/<owner>/<repo>/issues/<number>/sub_issues
    ```
    For each sub-issue returned, invoke `read-issue` on it (dedup-guarded).
-4. **Capture every linked resource** in the description and thread: other issues, PRs, docs, dashboards, images, external links. Hold them in context.
+4. **Capture every linked resource** in the description and thread: other issues, PRs, docs, dashboards, external links. Hold them in context.
 5. **Follow links one hop deep** (see Recursion):
    - Linked or referenced **PRs** -> invoke `read-pr` on each.
    - Related or mentioned **issues** -> invoke `read-issue` on each.

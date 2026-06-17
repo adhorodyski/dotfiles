@@ -2,14 +2,13 @@
 name: read-pr
 description: >
   Build deep context from a GitHub pull request, its thread, its full diff, and
-  how it has diverged from its target branch before further work. Use when given
-  a GitHub PR URL, when the user says "read <PR link>", "read this PR", or
-  invokes /read-pr. Reads the description and every comment in full, fetches the
-  whole diff, checks upstream divergence, and follows mentioned issues and PRs
-  one hop deep.
+  before further work. Use when given a GitHub PR URL, when the user says
+  "read <PR link>", "read this PR", or invokes /read-pr. Reads the description
+  and every comment in full, fetches the whole diff, and follows mentioned
+  issues and PRs one hop deep.
 ---
 
-Build a full mental model of a pull request: what it changes, what people said about it, and whether the target branch has moved underneath it. Read everything; absorb it into the conversation; do not write anything to disk. No local checkout or fetch (gh API only).
+Build a full mental model of a pull request: what it changes and what people said about it. Read everything; absorb it into the conversation; do not write anything to disk. No local checkout or fetch (gh API only).
 
 ## Steps
 
@@ -24,21 +23,8 @@ Build a full mental model of a pull request: what it changes, what people said a
    gh pr diff <url>
    ```
    Build a mental map: files touched, the shape of each change, the approach.
-4. **Upstream divergence check.** The PR's target branch may have moved since it branched. Find the base branch and the list of touched files:
-
-   ```bash
-   gh pr view <url> --json baseRefName,files
-   ```
-
-   For each touched file, compare the PR's version against the current target branch using `gh api` (no local checkout). Assess:
-   - Did upstream **refactor, rename, or delete** the code this PR modifies?
-   - Did someone **already implement** what this PR does?
-   - Are there **architectural changes** that invalidate the PR's approach?
-
-   Note any file where the PR now looks stale or conflicting.
-
-5. **Capture every linked resource** in the description and thread: issues, other PRs, docs, dashboards, images, external links.
-6. **Follow links one hop deep** (see Recursion):
+4. **Capture every linked resource** in the description and thread: issues, other PRs, docs, dashboards, external links.
+5. **Follow links one hop deep** (see Recursion):
    - Mentioned **issues** -> invoke `read-issue` on each.
    - Other **PRs** -> invoke `read-pr` on each.
 
