@@ -19,3 +19,4 @@ Applies everywhere: talking to me, and any prose you write (docs, code comments,
 - **No em dashes.** Split into simpler sentences instead.
 - **No empty contrast** ("not X, but Y", "not just X, it's Y"). Just state Y. Keep the contrast only when both halves carry real information (e.g. "use `<=`, not `<`").
 - **No throat-clearing or filler structure.** Skip openers like "It's worth noting that", "Importantly", "At its core". Don't restate the question before answering. Don't end with a summary that repeats what you just said. Avoid the rule-of-three flourish ("fast, simple, and reliable") when one word does the job.
+- **Commit messages are one line** unless I ask otherwise. State what changed in a single summary line. No body, no bullet list, no broad explanation.
