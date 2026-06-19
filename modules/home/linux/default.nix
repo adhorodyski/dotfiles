@@ -15,6 +15,7 @@
       focus-ring.enable = false;
       border.enable = true;
       border.width = 2;
+      center-focused-column = "always";
     };
     window-rules = [ 
       {
