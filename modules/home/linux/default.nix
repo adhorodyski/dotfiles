@@ -29,11 +29,11 @@
       }
     ];
     spawn-at-startup = [
-      { command = [ "noctalia-shell" ]; }
+      { command = [ "noctalia" ]; }
     ];
     binds = with config.lib.niri.actions; {
       "Mod+Return".action = spawn "ghostty";
-      "Mod+Space".action = spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
+      "Mod+Space".action = spawn "noctalia" "msg" "launcher" "toggle";
       "Mod+Q".action = close-window;
       "Mod+H".action = focus-column-left;
       "Mod+L".action = focus-column-right;
@@ -49,7 +49,7 @@
     };
   };
 
-  programs.noctalia-shell.enable = true;
+  programs.noctalia.enable = true;
 
   # GL override for Intel HD 4000 (reports 4.2; Ghostty needs 4.3).
   programs.ghostty = {
