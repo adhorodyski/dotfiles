@@ -33,7 +33,7 @@
     ];
     binds = with config.lib.niri.actions; {
       "Mod+Return".action = spawn "ghostty";
-      "Mod+Space".action = spawn "noctalia" "msg" "launcher" "toggle";
+      "Mod+Space".action = spawn "noctalia" "msg" "panel-toggle" "launcher";
       "Mod+Q".action = close-window;
       "Mod+H".action = focus-column-left;
       "Mod+L".action = focus-column-right;
