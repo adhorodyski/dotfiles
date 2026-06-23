@@ -37,7 +37,7 @@
     };
 
   fileSystems."/data" =
-    { device = "/dev/disk/by-uuid/REPLACE-WITH-UUID-FROM-BLKID";
+    { device = "/dev/disk/by-uuid/120f422f-d166-453f-989a-99ba6e705f75";
       fsType = "ext4";
     };
 
