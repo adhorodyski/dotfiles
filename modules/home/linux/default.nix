@@ -51,8 +51,6 @@
 
   programs.noctalia.enable = true;
 
-  programs.password-store.enable = true;
-
   # GL override for Intel HD 4000 (reports 4.2; Ghostty needs 4.3).
   programs.ghostty = {
     enable = true;
