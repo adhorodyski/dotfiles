@@ -9,5 +9,6 @@
     fnm
     worktrunk
     mkcert
+    fastfetch
   ];
 }
