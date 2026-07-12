@@ -49,7 +49,10 @@
     };
   };
 
-  programs.noctalia.enable = true;
+  programs.noctalia = {
+    enable = true;
+    settings = ./../../../.config/noctalia/config.toml;
+  };
 
   # GL override for Intel HD 4000 (reports 4.2; Ghostty needs 4.3).
   programs.ghostty = {
