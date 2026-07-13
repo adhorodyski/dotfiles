@@ -14,7 +14,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local is_linux = vim.uv.os_uname().sysname == "Linux"
+
 require("lazy").setup({
+  concurrency = is_linux and 1 or nil,
+  git = { timeout = 300 },
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },

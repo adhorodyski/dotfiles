@@ -1,0 +1,70 @@
+{ pkgs, lib, ... }:
+
+{
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    completionInit = ''
+      autoload -Uz compinit
+      local -a zcompdump=(~/.zcompdump(Nmh-24))
+      if (( $#zcompdump )); then
+        compinit -C
+      else
+        compinit
+      fi
+    '';
+    shellAliases = {
+      g = "git";
+      cop = "copilot";
+      nix-rebuild =
+        if pkgs.stdenv.isDarwin
+        then "sudo darwin-rebuild switch --flake $HOME/dotfiles#macbook"
+        else "sudo nixos-rebuild switch --flake $HOME/dotfiles#mini";
+    };
+    profileExtra = lib.optionalString pkgs.stdenv.isDarwin ''
+      for b in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+        [ -x "$b" ] && eval "$("$b" shellenv)" && break
+      done
+
+      command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash zsh)"
+
+      if [ -d "$HOME/Library/Android/sdk" ]; then
+        export ANDROID_HOME="$HOME/Library/Android/sdk"
+        export ANDROID_SDK_ROOT="$ANDROID_HOME"
+        export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+      fi
+    '';
+    initContent = ''
+      eval "$(fnm env --use-on-cd --shell zsh)"
+
+      if command -v wt >/dev/null 2>&1; then eval "$(wt config shell init zsh)"; fi
+
+      source ${pkgs.fetchFromGitHub {
+        owner = "subnixr";
+        repo = "minimal";
+        rev = "6588a399744f34194a25988b4c159cb8b8c67e27";
+        hash = "sha256-r5AIk7TzXQ5x+mXRA6isWCn0FvmICeFR36k5Kq4s+Yk=";
+      }}/minimal.zsh
+
+      function mnml_git {
+          local statc="%{\e[0;38;2;230;112;78m%}"
+          local bname="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+          if [ -n "$bname" ]; then
+              printf '%b' "$statc$bname%{\e[0m%}"
+          fi
+      }
+    '';
+  };
+
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    extraOptions = [ "--no-user" "--no-time" "--git-ignore" ];
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+}

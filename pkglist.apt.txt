@@ -1,7 +1,0 @@
-zsh
-git
-neovim
-ripgrep
-git-delta
-gnupg
-tree
