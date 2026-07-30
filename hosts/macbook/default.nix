@@ -5,7 +5,8 @@
     enable = true;
     onActivation.cleanup = "zap";
     onActivation.extraFlags = [ "--force" ];
-    brews = [ "cocoapods" "rbenv" "watchman" ];
+    taps = [ "rtk-ai/tap" ];
+    brews = [ "cocoapods" "rbenv" "watchman" "rtk-ai/tap/rtk" ];
     casks = [ "ghostty" ];
   };
 
