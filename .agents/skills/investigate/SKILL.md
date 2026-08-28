@@ -67,8 +67,6 @@ Say these things in this order, each in a sentence or two:
 
 Every claim carries its number and `rerun` line. Name the `file:line` of the mechanism in the sentence that describes it, when the evidence pinned it. Mention an unmeasured hypothesis as a clause on the claim it qualifies, never as a finding of its own.
 
-Print the draft, then `red-team killed <n> claims, downgraded <m>.` outside it. The tally is for you, not for the issue.
-
 ## Rules
 
 - A number without a `rerun` line that ran here does not go in the draft.
