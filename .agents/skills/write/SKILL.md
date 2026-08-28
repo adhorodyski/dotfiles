@@ -16,7 +16,6 @@ Produce the final text. The user sees one version.
 
 | Artifact | Cap | Shape |
 | --- | --- | --- |
-| PR description | 150 words | Fill the repo template. Prose in the body sections. |
 | PR explanation | 120 words | What changed, why, what it does not cover. |
 | Issue comment | 200 words | Finding, then evidence, then open question if any. |
 | Review reply | 60 words | Agree or disagree in the first sentence. |
@@ -44,6 +43,7 @@ Wording is `/deslop`'s job. The critic never rules on it. The critic checks thre
 
 ## Rules
 
+- The cap counts prose only. A PR template's checklists, test steps, and QA steps sit outside it and must be filled completely. Never trim them to pass.
 - Never post, commit, or push.
 - Identifiers, commands, error strings, and paths stay verbatim.
 - Keep every caveat that changes what the reader does. The critic does not reward cuts that drop a real constraint.
