@@ -55,17 +55,17 @@ Verdict per claim: `HOLDS`, `DOWNGRADE` (state the weaker surviving claim), or `
 
 ## 5. Report
 
-Hand the result to `/write` as an issue comment, or whatever artifact the subject calls for. It must stand on its own for someone reading it a year later. Use this order, and omit any section with nothing in it.
+Hand the result to `/write` as an issue comment, or whatever artifact the subject calls for. Prose, no headers, no labelled bullets. It must stand on its own for someone reading it a year later.
 
-- **Verdict.** One sentence: the claim as stated, and whether it stands.
-- **Magnitude.** What share of what population, over what window. If the sizing hypothesis came back `INCONCLUSIVE`, say so and name the missing source.
-- **What holds.** `CONFIRMED` claims the red-team marked `HOLDS`, and `DOWNGRADE` claims at their weaker version. Each with its number and `rerun` line.
-- **What does not.** Refuted claims and anything marked `BROKEN`. A dead premise is what stops the wrong fix from shipping, so report it, never drop it.
-- **Where it lives.** The `file:line` of the mechanism, when the evidence pinned it.
-- **Also found.** An adjacent effect a query surfaced. If the verdict is that the claim stands, this is a follow-up and is phrased as one. Only when the claim is refuted may it be offered as the thing to look at instead.
-- **Not measured.** `INCONCLUSIVE` hypotheses, one line each naming the missing source. Never phrased as findings.
+Say these things in this order, each in a sentence or two:
 
-Close with the one open question that would most change the fix, or nothing.
+1. What the report claimed, and whether it stands.
+2. How big it is: what share of what population, over what window. If the sizing hypothesis came back `INCONCLUSIVE`, say that instead and name the missing source.
+3. What is false. Refuted claims and anything the red-team marked `BROKEN`. A dead premise is what stops the wrong fix from shipping, so report it, never drop it.
+4. Anything else a query surfaced, if it carries a number. A follow-up when the claim stands. Only when the claim is refuted may it be offered as the thing to look at instead.
+5. The one open question that would most change the fix, or nothing.
+
+Every claim carries its number and `rerun` line. Name the `file:line` of the mechanism in the sentence that describes it, when the evidence pinned it. Mention an unmeasured hypothesis as a clause on the claim it qualifies, never as a finding of its own.
 
 Print the draft, then `red-team killed <n> claims, downgraded <m>.` outside it. The tally is for you, not for the issue.
 
