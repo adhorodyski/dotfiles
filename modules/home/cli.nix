@@ -10,5 +10,6 @@
     worktrunk
     mkcert
     fastfetch
+    ffmpeg
   ];
 }
