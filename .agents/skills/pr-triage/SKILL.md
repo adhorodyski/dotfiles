@@ -2,29 +2,24 @@
 name: pr-triage
 description: >
   Triage open PR review feedback. Verifies every unresolved comment against the
-  current code, drops the ones already handled or already wrong, and presents
-  only what survives with a proposed fix. Runs one PR or sweeps every open PR
-  you own. Triggers on "/pr-triage", "what's left on this PR", "open PR
-  comments", "triage all my PRs".
+  current code, drops the ones already handled or already wrong, and lists only
+  what survives with a short take and a proposed fix. Triggers on "/pr-triage",
+  "what's left on this PR", "open PR comments".
 ---
 
-Every review comment is a claim about the code. Test each claim, show only the ones that hold. Present, do not apply.
+Every review comment is a claim about the code. Test each claim, list only the ones that hold. Present, do not apply.
 
-## Target
+## Parameter
 
-A PR number or URL, or `all` for every open PR you own, or nothing for the current branch.
+A PR number, passed as an argument or taken from the current branch.
 
-```bash
-gh pr list --author @me --state open --json number,title,headRepository
-```
+## 1. Build context
 
-## 1. Dispatch
+Run `/read-pr`. Do not triage before it finishes.
 
-One subagent per PR, all in one message, even for a single PR. Cap at eight; with more, take the eight with the most unresolved threads and name the rest as untriaged. Each runs section 2 in its own context, so the diffs never enter this conversation.
+## 2. Fetch the unresolved threads
 
-## 2. The subagent's job
-
-Run `/read-pr` on its PR, then fetch the unresolved threads. Resolved state is GraphQL only; REST `pulls/{PR}/comments` has no such field.
+Resolved state is GraphQL only; REST `pulls/{PR}/comments` has no such field.
 
 ```bash
 gh api graphql -F owner='{owner}' -F repo='{repo}' -F pr={PR} -f query='
@@ -35,11 +30,15 @@ gh api graphql -F owner='{owner}' -F repo='{repo}' -F pr={PR} -f query='
   }' --jq '.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved | not) | .comments.nodes'
 ```
 
-Review summaries and issue-style comments come from `/read-pr`.
+Review summaries and issue-style comments come from step 1.
 
-Drop a comment when the author replied to settle it, when a later commit does what it asked, or when it is the author talking to themselves. A commit touching the same lines is not enough; the change must match the ask. When unsure, keep it.
+## 3. Drop the handled ones
 
-For each comment left, open the current source at its path and lines and read it. Decide from the code, not from the reviewer's description of the code. A comment is not valid because a reviewer is senior. Then write one block:
+Skip a comment when the author replied to settle it, when a later commit does what it asked, or when it is the author talking to themselves. A commit touching the same lines is not enough; the change must match the ask. When unsure, keep it.
+
+## 4. Test what is left
+
+Open the current source at each comment's path and lines and read it. Decide from the code, not from the reviewer's description of the code. A comment is not valid because a reviewer is senior. Then write one block per comment:
 
 ```
 🟢|🟡|🔴|❓ {path}:{line} — [link]({url})
@@ -55,13 +54,7 @@ the change to make, or a one-line reply to post.
 - 🔴 claim does not hold. Say which line proves it.
 - ❓ untestable until the reviewer clarifies.
 
-## 3. Report
-
-One table, then the blocks ordered by 🟢 count, highest first.
-
-| PR | title | 🟢 | 🟡 | 🔴 | ❓ |
-
-A PR with nothing open gets one line under the table. Give a count of comments dropped as already handled, not a list.
+Give a count of the comments dropped in step 3, not a list.
 
 ## Rules
 
