@@ -14,14 +14,23 @@ Prove or kill a report's claims before anyone writes code. Every number comes fr
 Everything below produces one artifact:
 
 ```
-Problem: <one sentence: what is actually wrong, in plain language, with the number that sizes it.>
+**Problem**
 
-Build
-1. <the change> — <one sentence on what this solves.> <the number.>
-   rerun: <verbatim>
+<one sentence: what is actually wrong, in plain language, with the number that sizes it.>
 
-Dead
-- <the claim> — <what killed it>
+**Build**
+
+1. **<the change>.** <one sentence on what this solves.> <the number.>
+
+**Dead**
+
+- <the claim>. <what killed it>
+
+<details><summary>rerun</summary>
+
+1. `<verbatim>`
+
+</details>
 ```
 
 ## 1. Read the subject
@@ -81,10 +90,11 @@ Draft the block at the top of this skill, held to these:
 - The sentence on each `Build` entry says what it solves for the people hitting it. Plain words, under twenty of them. No `file:line`, no function or symbol names, no jargon. Someone who has never opened the repo understands it.
 - `Build` is ordered by size of effect. Every entry is work that starts today, including instrumentation to add where the measurement was blocked.
 - No entry asks the user to run, check, watch, or look into anything. Step 5 already ran it.
-- One sentence plus its `rerun` per entry. Longer means it is two entries.
+- Bold is for the three section labels and the change on each `Build` entry. Nothing else in the report is bold. A period ends the bold change, then the sentence. Longer than one sentence means it is two entries.
+- Every `rerun` line lives in the collapsed block at the bottom, numbered to match its `Build` entry, and nowhere else. The report body carries no queries.
 - `Dead` is one line per killed claim, and that is all it is. No numbers, no `rerun`, no explanation. It exists so nobody builds for a dead premise.
 - `Build` empty is a complete result. Say so in the `Problem` line, and let `Dead` carry the reason.
-- One screen. Nothing before the `Problem` line and nothing after the last bullet.
+- Each section label sits on its own line with a blank line after it. One screen with the rerun block collapsed. Nothing before **Problem** and nothing after the rerun block.
 
 Then pipe the draft through `/write`: artifact `investigation report`, cap 150 words of prose. Tell its critic the three blocks are required shape, so it rules on the `Problem` line and the `Build` sentences only. Suppress its closing note about what it caught.
 
