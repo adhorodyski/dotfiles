@@ -2,13 +2,27 @@
 name: investigate
 description: >
   Test a reported problem's claims against real evidence, unattended. Turns the
-  report into falsifiable hypotheses, tests each in parallel against whatever
-  telemetry and code this session can reach, red-teams the results, and drafts
-  findings containing only what survived. Use when the user says "investigate
-  <thing>", "verify this", "is this real", or invokes /investigate.
+  report into falsifiable hypotheses and tests each in parallel against the
+  telemetry and code this session can reach. Red-teams what comes back, closes
+  its own open questions, and returns the problem, what to build, and what is
+  dead. Use when the user says "investigate <thing>", "verify this", "is this
+  real", or invokes /investigate.
 ---
 
 Prove or kill a report's claims before anyone writes code. Every number comes from something that ran in this session.
+
+Everything below produces one artifact:
+
+```
+Problem: <one sentence: what is actually wrong, in plain language, with the number that sizes it.>
+
+Build
+1. <the change> — <one sentence on what this solves.> <the number.>
+   rerun: <verbatim>
+
+Dead
+- <the claim> — <what killed it>
+```
 
 ## 1. Read the subject
 
@@ -16,9 +30,9 @@ An issue, ticket, thread, pasted report, or a claim the user just made. Infer it
 
 ## 2. Write hypotheses
 
-Numbered and falsifiable. Falsifiable means you can name the source that would prove it wrong, and you can reach that source from here. "Reconnects are too frequent" fails. "Over 20% of reconnects happen within 5s of a previous one" passes.
+Numbered and falsifiable. Falsifiable means you can name the source that would prove it wrong, and reach that source from here. "Reconnects are too frequent" fails. "Over 20% of reconnects happen within 5s of a previous one" passes.
 
-Always include two: the report's own stated cause, and one that sizes the problem as a share of a population over a window. Beyond those, write one per distinct claim; do not merge two claims to stay under a count.
+Always include two: the report's own stated cause, and one that sizes the problem as a share of a population over a window. Beyond those, write one per distinct claim. Never merge two claims to stay under a count.
 
 If no hypothesis is testable with the sources you have, stop and say so. Do not substitute reasoning for measurement.
 
@@ -42,7 +56,7 @@ An `also` without a number and a `rerun` line is speculation. Leave it empty.
 
 ## 4. Red-team
 
-After every batch returns, dispatch one more subagent with all the findings and one job: break them. Give it the same tool access the others had, because two of its checks require re-running things. It checks each claim for
+After every batch returns, dispatch one more subagent with all the findings and one job: break them. Give it the same tool access the others had, because some of its checks re-run queries and read git history. Verdict per claim: `HOLDS`, `DOWNGRADE` (state the weaker surviving claim), or `BROKEN`. It checks each claim for
 
 - a window overlapping a release, incident, or rollout ramp,
 - a population narrower than the claim describes,
@@ -51,25 +65,34 @@ After every batch returns, dispatch one more subagent with all the findings and 
 - a cause attributed to code that was not live in the measured window,
 - a `rerun` line that does not reproduce the number when run.
 
-Verdict per claim: `HOLDS`, `DOWNGRADE` (state the weaker surviving claim), or `BROKEN`.
+## 5. Close the gaps
 
-## 5. Report
+Any question still open that would change what gets built goes back through step 3 as another batch, then through step 4 again. Repeat until nothing open changes the build list, or two extra rounds have run.
 
-Hand the result to `/write` as an issue comment, or whatever artifact the subject calls for. Prose, no headers, no labelled bullets. It must stand on its own for someone reading it a year later.
+A question the sources cannot answer at all stops there. The field does not exist, or the log line is never written. Adding that instrumentation becomes a build item.
 
-Say these things in this order, each in a sentence or two:
+Never hand back a query to run later. If it was worth running, it ran here.
 
-1. What the report claimed, and whether it stands.
-2. How big it is: what share of what population, over what window. If the sizing hypothesis came back `INCONCLUSIVE`, say that instead and name the missing source.
-3. What is false. Refuted claims and anything the red-team marked `BROKEN`. A dead premise is what stops the wrong fix from shipping, so report it, never drop it.
-4. Anything else a query surfaced, if it carries a number. A follow-up when the claim stands. Only when the claim is refuted may it be offered as the thing to look at instead.
-5. The one open question that would most change the fix, or nothing.
+## 6. Report
 
-Every claim carries its number and `rerun` line. Name the `file:line` of the mechanism in the sentence that describes it, when the evidence pinned it. Mention an unmeasured hypothesis as a clause on the claim it qualifies, never as a finding of its own.
+Draft the block at the top of this skill, held to these:
+
+- The `Problem` line is your conclusion, not the report's claim repeated. When the report named the wrong thing, name the right one. "Nothing is broken" is a valid `Problem` line.
+- The sentence on each `Build` entry says what it solves for the people hitting it. Plain words, under twenty of them. No `file:line`, no function or symbol names, no jargon. Someone who has never opened the repo understands it.
+- `Build` is ordered by size of effect. Every entry is work that starts today, including instrumentation to add where the measurement was blocked.
+- No entry asks the user to run, check, watch, or look into anything. Step 5 already ran it.
+- One sentence plus its `rerun` per entry. Longer means it is two entries.
+- `Dead` is one line per killed claim, and that is all it is. No numbers, no `rerun`, no explanation. It exists so nobody builds for a dead premise.
+- `Build` empty is a complete result. Say so in the `Problem` line, and let `Dead` carry the reason.
+- One screen. Nothing before the `Problem` line and nothing after the last bullet.
+
+Then pipe the draft through `/write`: artifact `investigation report`, cap 150 words of prose. Tell its critic the three blocks are required shape, so it rules on the `Problem` line and the `Build` sentences only. Suppress its closing note about what it caught.
 
 ## Rules
 
-- A number without a `rerun` line that ran here does not go in the draft.
+- A number without a `rerun` line that ran here does not go in the report.
+- No progress narration. No "dispatching", no "waiting on", no per-batch summary, no round counts. The next thing the user sees after the hypotheses is the report.
 - Never say a fix worked because a metric moved. Name what else changed in that window, or say you checked and nothing did.
-- Every hypothesis refuted is a complete result. Report it. Do not go hunting for a different problem to solve; an alternative belongs in the draft only when a query already surfaced it with a number.
+- Every hypothesis refuted is a complete result. Do not go hunting for another problem to solve. An alternative reaches `Build` only when a query surfaced it with a number.
+- The report is for the user, not a thread. No draft comment, no posting.
 - Never post, open a PR, or write code.
