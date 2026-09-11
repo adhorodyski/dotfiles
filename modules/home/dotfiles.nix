@@ -5,6 +5,8 @@
   xdg.configFile."worktrunk/config.toml".source = ./../../.config/worktrunk/config.toml;
 
   home.file.".agents/AGENTS.md".source = ./../../.agents/AGENTS.md;
+  # Pi reads global instructions from here; it ignores ~/.agents/AGENTS.md.
+  home.file.".pi/agent/AGENTS.md".source = ./../../.agents/AGENTS.md;
   home.file.".claude/CLAUDE.md".source = ./../../.claude/CLAUDE.md;
   home.file.".claude/RTK.md".source = ./../../.claude/RTK.md;
 
