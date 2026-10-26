@@ -269,17 +269,17 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1793032195,
-        "narHash": "sha256-12jGaIOgo+nxMrJW0WRq+ZcK8sNdPf2pRpXvhzVHGJI=",
+        "lastModified": 1792937849,
+        "narHash": "sha256-iYeRZL3pVinGmJb1j4diHJz8s6cvzqtuE5H3goamPsw=",
         "owner": "nightly-labs",
         "repo": "openbot",
-        "rev": "3e919ba5f6a895175bc4f620ff55916c55964f8f",
+        "rev": "153dba0fe8af31ac44f31ac1983622644a941507",
         "type": "github"
       },
       "original": {
         "owner": "nightly-labs",
         "repo": "openbot",
-        "rev": "3e919ba5f6a895175bc4f620ff55916c55964f8f",
+        "rev": "153dba0fe8af31ac44f31ac1983622644a941507",
         "type": "github"
       }
     },

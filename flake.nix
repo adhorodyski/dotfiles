@@ -19,7 +19,7 @@
     noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
     noctalia-greeter.inputs.nixpkgs.follows = "nixpkgs";
 
-    openbot.url = "github:nightly-labs/openbot/3e919ba5f6a895175bc4f620ff55916c55964f8f";
+    openbot.url = "github:nightly-labs/openbot/153dba0fe8af31ac44f31ac1983622644a941507";
   };
 
   outputs = { self, nixpkgs, worktrunk, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, openbot, ... }:
