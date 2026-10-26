@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  environment.systemPackages = [ pkgs.openbot ];
+
   # niri Wayland compositor (niri-flake nixos module — provides niri-session,
   # polkit/session integration, and auto-enables niri's Cachix binary cache).
   programs.niri.enable = true;

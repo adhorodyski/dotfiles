@@ -18,9 +18,11 @@
 
     noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
     noctalia-greeter.inputs.nixpkgs.follows = "nixpkgs";
+
+    openbot.url = "github:nightly-labs/openbot/3e919ba5f6a895175bc4f620ff55916c55964f8f";
   };
 
-  outputs = { self, nixpkgs, worktrunk, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, ... }:
+  outputs = { self, nixpkgs, worktrunk, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, openbot, ... }:
     let
       mkHome = sharedModules: {
         home-manager.useGlobalPkgs = true;
@@ -38,6 +40,7 @@
           niri.nixosModules.niri
           noctalia-greeter.nixosModules.default
           home-manager.nixosModules.home-manager
+          { nixpkgs.overlays = [ openbot.overlays.default ]; }
           (mkHome [
             noctalia.homeModules.default
             ./modules/home/linux

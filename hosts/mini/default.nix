@@ -38,7 +38,7 @@
     "net.ipv6.conf.wlp2s0b1.accept_ra_rt_info_max_plen" = 64;
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: lib.getName pkg == "b43-firmware";
+  nixpkgs.config.allowUnfreePredicate = pkg: lib.getName pkg == "b43-firmware" || lib.getName pkg == "openbot";
   networking.enableB43Firmware = true;
   boot.blacklistedKernelModules = [ "wl" "brcmsmac" "brcmfmac" ];
 }
