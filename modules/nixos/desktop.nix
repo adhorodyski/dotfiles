@@ -5,7 +5,7 @@
   # polkit/session integration, and auto-enables niri's Cachix binary cache).
   programs.niri.enable = true;
 
-  programs.noctalia-greeter.enable = true;
+  services.displayManager.noctalia-greeter.enable = true;
 
   # Audio.
   security.rtkit.enable = true;
