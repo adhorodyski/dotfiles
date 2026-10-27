@@ -11,6 +11,7 @@
     fnm
     mkcert
     fastfetch
+    pi
     ffmpeg
   ];
 }

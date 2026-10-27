@@ -18,9 +18,12 @@
 
     noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
     noctalia-greeter.inputs.nixpkgs.follows = "nixpkgs";
+
+    pi.url = "github:earendil-works/pi/v1.4.0";
+    pi.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, worktrunk, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, ... }:
+  outputs = { self, nixpkgs, worktrunk, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, pi, ... }:
     let
       mkHome = sharedModules: {
         home-manager.useGlobalPkgs = true;
@@ -35,6 +38,7 @@
         modules = [
           ./hosts/${host}
           ./modules/nixos
+          { nixpkgs.overlays = [ pi.overlays.default ]; }
           niri.nixosModules.niri
           noctalia-greeter.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -49,6 +53,7 @@
         system = "aarch64-darwin";
         modules = [
           ./hosts/${host}
+          { nixpkgs.overlays = [ pi.overlays.default ]; }
           home-manager.darwinModules.home-manager
           (mkHome [ ])
         ];
