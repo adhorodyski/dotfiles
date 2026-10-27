@@ -2,7 +2,6 @@
 
 {
   xdg.configFile."ghostty/config".source = ./../../.config/ghostty/config.ghostty;
-  xdg.configFile."worktrunk/config.toml".source = ./../../.config/worktrunk/config.toml;
 
   home.file.".agents/AGENTS.md".source = ./../../.agents/AGENTS.md;
   # Pi reads global instructions from here; it ignores ~/.agents/AGENTS.md.

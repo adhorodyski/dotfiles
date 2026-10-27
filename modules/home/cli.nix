@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  programs.worktrunk.enable = true;
-
   home.packages = with pkgs; [
     ripgrep
     tree
