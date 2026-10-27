@@ -30,11 +30,22 @@
         home-manager.sharedModules = sharedModules;
         home-manager.users.adhorodyski = import ./modules/home;
       };
+    in
+    {
+      darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./hosts/macbook
+          { nixpkgs.overlays = [ pi.overlays.default ]; }
+          home-manager.darwinModules.home-manager
+          (mkHome [ ])
+        ];
+      };
 
-      mkNixos = host: nixpkgs.lib.nixosSystem {
+      nixosConfigurations."mini" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/${host}
+          ./hosts/mini
           ./modules/nixos
           { nixpkgs.overlays = [ pi.overlays.default ]; }
           niri.nixosModules.niri
@@ -46,19 +57,5 @@
           ])
         ];
       };
-
-      mkDarwin = host: nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./hosts/${host}
-          { nixpkgs.overlays = [ pi.overlays.default ]; }
-          home-manager.darwinModules.home-manager
-          (mkHome [ ])
-        ];
-      };
-    in
-    {
-      darwinConfigurations."macbook" = mkDarwin "macbook";
-      nixosConfigurations."mini" = mkNixos "mini";
     };
 }

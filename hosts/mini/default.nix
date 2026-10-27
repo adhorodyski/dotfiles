@@ -1,10 +1,7 @@
 { lib, ... }:
 
 {
-  imports = [
-    ./hardware.nix
-    ../../modules/nixos/desktop.nix
-  ];
+  imports = [ ./hardware.nix ];
 
   networking.hostName = "mini";
   zramSwap.enable = true;
