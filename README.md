@@ -48,3 +48,5 @@ Editor: [Neovim](https://neovim.io/), [LazyVim](https://www.lazyvim.org/), [Zenb
 Git: [delta](https://github.com/dandavison/delta), [worktrunk](https://github.com/max-sixty/worktrunk)
 
 Node: [fnm](https://github.com/Schniz/fnm)
+
+Agent: [Pi](https://pi.dev/), pinned upstream and built by its own flake. Upgrade with `nix flake update pi` then rebuild; never `pi update`.
