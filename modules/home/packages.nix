@@ -1,9 +1,20 @@
 { pkgs, config, ... }:
 
 {
-  home.packages = [
-    pkgs.neovim
-    pkgs.gcc # C compiler for nvim-treesitter parsers
+  home.packages = with pkgs; [
+    # editor (+ C compiler for nvim-treesitter parsers)
+    neovim
+    gcc
+
+    ripgrep
+    tree
+    gnupg
+    gh
+    fnm
+    mkcert
+    fastfetch
+    pi
+    ffmpeg
   ];
 
   home.sessionVariables.EDITOR = "nvim";
