@@ -15,7 +15,6 @@
         d = "diff";
         dc = "diff --cached";
         l = "log --oneline --decorate";
-        wl = "worktree list";
       };
       core.editor = "nvim";
       core.autocrlf = false;
