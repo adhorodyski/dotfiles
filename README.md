@@ -45,7 +45,7 @@ Shell: [Zsh](https://www.zsh.org/), [minimal](https://github.com/subnixr/minimal
 
 Editor: [Neovim](https://neovim.io/), [LazyVim](https://www.lazyvim.org/), [Zenbones](https://github.com/zenbones-theme/zenbones.nvim)
 
-Git: [delta](https://github.com/dandavison/delta), [worktrunk](https://github.com/max-sixty/worktrunk)
+Git: [delta](https://github.com/dandavison/delta)
 
 Node: [fnm](https://github.com/Schniz/fnm)
 

@@ -3,8 +3,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    worktrunk.url = "github:max-sixty/worktrunk/v0.75.0";
-
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -23,13 +21,13 @@
     pi.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, worktrunk, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, pi, ... }:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, pi, ... }:
     let
       mkHome = sharedModules: {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.backupFileExtension = "bak";
-        home-manager.sharedModules = sharedModules ++ [ worktrunk.homeModules.default ];
+        home-manager.sharedModules = sharedModules;
         home-manager.users.adhorodyski = import ./modules/home;
       };
 
