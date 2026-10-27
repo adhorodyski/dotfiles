@@ -22,7 +22,7 @@
 
   networking.firewall = {
     enable = true;
-    allowedUDPPorts = [ 
+    allowedUDPPorts = [
       5353   # mDNS (Crucial for phone/accessory discovery)
       19788  # OpenThread Link port (For multi-Border Router sync)
     ];
@@ -30,11 +30,11 @@
       8123 # HAOS App
     ];
   };
-  
+
   # Ensure multicast routing is allowed on the kernel level
   boot.kernel.sysctl = {
     "net.ipv6.conf.all.forwarding" = 1;
-    "net.ipv6.conf.wlp2s0b1.accept_ra" = 2; 
+    "net.ipv6.conf.wlp2s0b1.accept_ra" = 2;
     "net.ipv6.conf.wlp2s0b1.accept_ra_rt_info_max_plen" = 64;
   };
 

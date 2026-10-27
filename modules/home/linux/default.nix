@@ -17,7 +17,7 @@
       border.width = 2;
       center-focused-column = "always";
     };
-    window-rules = [ 
+    window-rules = [
       {
         clip-to-geometry = true;
         geometry-corner-radius = {
@@ -25,7 +25,7 @@
           top-right = 12.0;
           bottom-right = 12.0;
           bottom-left = 12.0;
-        }; 
+        };
       }
     ];
     spawn-at-startup = [
