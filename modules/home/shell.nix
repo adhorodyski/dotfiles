@@ -16,7 +16,6 @@
     '';
     shellAliases = {
       g = "git";
-      cop = "copilot";
       nix-rebuild =
         if pkgs.stdenv.isDarwin
         then "sudo darwin-rebuild switch --flake $HOME/dotfiles#macbook"
