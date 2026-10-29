@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -41,4 +41,6 @@
   nixpkgs.config.allowUnfreePredicate = pkg: lib.getName pkg == "b43-firmware";
   networking.enableB43Firmware = true;
   boot.blacklistedKernelModules = [ "wl" "brcmsmac" "brcmfmac" ];
+
+  environment.systemPackages = [ pkgs.restic ];
 }
