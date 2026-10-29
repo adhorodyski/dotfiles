@@ -171,7 +171,6 @@
         "owner": "noctalia-dev",
         "repo": "noctalia",
         "rev": "125a30d4f13e86200e704a013d17ac0ed88a8044",
-        "ref": "v5.4.0",
         "type": "github"
       },
       "original": {
@@ -193,7 +192,6 @@
         "owner": "noctalia-dev",
         "repo": "noctalia-greeter",
         "rev": "af0bf4b1e1c40738db917b04c9c0563b4f718953",
-        "ref": "v1.7.0",
         "type": "github"
       },
       "original": {
