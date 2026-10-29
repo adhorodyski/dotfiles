@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -41,4 +41,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg: lib.getName pkg == "b43-firmware";
   networking.enableB43Firmware = true;
   boot.blacklistedKernelModules = [ "wl" "brcmsmac" "brcmfmac" ];
+
+  # restic runs the openbot-server backups (backup.sh / restore.sh in that repo).
+  environment.systemPackages = [ pkgs.restic ];
 }
