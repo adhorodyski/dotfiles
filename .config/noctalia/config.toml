@@ -1,12 +1,12 @@
 [bar.default]
-background_opacity = 0.79999998211860657
+background_opacity = 0.8
 center = []
 end = [ "temp", "cpu", "ram", "spacer_4", "bluetooth", "network", "spacer_3", "date", "clock" ]
 font_family = "Inter"
 margin_edge = 0
 margin_ends = 0
 radius = 0
-scale = 0.90000000596046448
+scale = 0.9
 shadow = false
 start = [ "control-center", "spacer_2", "active_window" ]
 thickness = 28
@@ -87,7 +87,7 @@ app_icon_color = "surface"
 font_family = "JetBrainsMono NF"
 
     [shell.animation]
-    speed = 0.80000001192092896
+    speed = 0.8
 
     [shell.panel]
     control_center_placement = "floating"
@@ -110,9 +110,6 @@ wallpaper_scheme = "muted"
 [wallpaper.default]
 path = "/home/adhorodyski/Pictures/Wallpapers/nix-wallpaper-binary-black.png"
 
-[wallpaper.last]
-path = "/home/adhorodyski/Pictures/Wallpapers/nix-wallpaper-binary-black.png"
-
 [wallpaper.monitors.DP-1]
 path = "/home/adhorodyski/Pictures/Wallpapers/nix-wallpaper-binary-black.png"
 
@@ -125,7 +122,7 @@ title_scroll = "always"
 
 [widget.control-center]
 glyph = "terminal-2"
-scale = 1.1500000000000001
+scale = 1.15
 
 [widget.cpu]
 display = "text"
@@ -157,4 +154,4 @@ show_label = false
 
 [widget.workspaces]
 display = "none"
-scale = 0.60000000000000009
+scale = 0.6
