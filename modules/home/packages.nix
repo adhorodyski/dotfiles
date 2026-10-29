@@ -2,10 +2,9 @@
 
 {
   home.packages = with pkgs; [
-    # editor (+ C compiler for nvim-treesitter parsers)
     neovim
+    # C compiler for nvim-treesitter parsers
     gcc
-
     ripgrep
     tree
     gnupg
