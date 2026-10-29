@@ -11,9 +11,9 @@
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
 
-    noctalia.url = "github:noctalia-dev/noctalia";
+    noctalia.url = "github:noctalia-dev/noctalia/v5.4.0";
 
-    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
+    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter/v1.7.0";
     noctalia-greeter.inputs.nixpkgs.follows = "nixpkgs";
 
     pi.url = "github:earendil-works/pi/v1.4.0";
