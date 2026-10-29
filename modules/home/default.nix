@@ -4,8 +4,7 @@
   imports = [
     ./shell.nix
     ./git.nix
-    ./editor.nix
-    ./cli.nix
+    ./packages.nix
     ./dotfiles.nix
   ];
 

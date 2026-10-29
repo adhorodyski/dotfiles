@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./firefox.nix
-  ];
+  programs.firefox.enable = true;
 
   # `programs.niri.enable` lives at the system level (modules/nixos/desktop.nix);
   # that nixosModule injects this HM module, which exposes only `settings`.
