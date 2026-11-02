@@ -39,5 +39,8 @@
   networking.enableB43Firmware = true;
   boot.blacklistedKernelModules = [ "wl" "brcmsmac" "brcmfmac" ];
 
-  environment.systemPackages = [ pkgs.restic ];
+  environment.systemPackages = [
+    pkgs.restic
+    pkgs.t3code
+  ];
 }
