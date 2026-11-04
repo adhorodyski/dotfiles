@@ -49,4 +49,4 @@ Git: [delta](https://github.com/dandavison/delta)
 
 Node: [fnm](https://github.com/Schniz/fnm)
 
-Agent: [Pi](https://pi.dev/), pinned upstream and built by its own flake. Upgrade with `nix flake update pi` then rebuild; never `pi update`.
+Harness: [Pi](https://pi.dev/)
