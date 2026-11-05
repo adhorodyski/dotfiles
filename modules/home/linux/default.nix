@@ -14,6 +14,11 @@
       border.enable = true;
       border.width = 2;
       center-focused-column = "always";
+      preset-column-widths = [
+        { proportion = 1.0 / 3; }
+        { proportion = 0.5; }
+        { proportion = 2.0 / 3; }
+      ];
     };
     window-rules = [
       {
@@ -35,6 +40,7 @@
       "Mod+Q".action = close-window;
       "Mod+H".action = focus-column-left;
       "Mod+L".action = focus-column-right;
+      "Mod+R".action = switch-preset-column-width;
       "Mod+J".action = focus-workspace-down;
       "Mod+K".action = focus-workspace-up;
       "Mod+Shift+J".action = move-column-to-workspace-down;
