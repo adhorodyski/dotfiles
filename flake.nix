@@ -16,7 +16,7 @@
     noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter/v1.7.0";
     noctalia-greeter.inputs.nixpkgs.follows = "nixpkgs";
 
-    pi.url = "github:earendil-works/pi/v1.4.0";
+    pi.url = "github:earendil-works/pi/136a7b2d7d46a65d047c22c5af92ca214763466b";
     pi.inputs.nixpkgs.follows = "nixpkgs";
   };
 
