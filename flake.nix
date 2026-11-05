@@ -18,9 +18,11 @@
 
     pi.url = "github:earendil-works/pi/v1.4.0";
     pi.inputs.nixpkgs.follows = "nixpkgs";
+
+    helium.url = "github:oxcl/nix-flake-helium-browser";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, pi, ... }:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, niri, noctalia, noctalia-greeter, pi, helium, ... }:
     let
       mkHome = sharedModules: {
         home-manager.useGlobalPkgs = true;
@@ -46,7 +48,7 @@
         modules = [
           ./hosts/mini
           ./modules/nixos
-          { nixpkgs.overlays = [ pi.overlays.default ]; }
+          { nixpkgs.overlays = [ pi.overlays.default helium.overlays.default ]; }
           niri.nixosModules.niri
           noctalia-greeter.nixosModules.default
           home-manager.nixosModules.home-manager
