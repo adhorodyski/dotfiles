@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  programs.firefox.enable = true;
-
   home.packages = [ pkgs.helium ];
 
   # `programs.niri.enable` lives at the system level (modules/nixos/desktop.nix);
