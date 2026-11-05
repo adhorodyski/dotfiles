@@ -19,8 +19,6 @@
     pi.url = "github:earendil-works/pi/v1.4.0";
     pi.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Helium browser (linux packaging). Upstream auto-updates its pin via CI;
-    # bump this input (flake.lock) to get newer Helium releases.
     helium.url = "github:oxcl/nix-flake-helium-browser";
   };
 
