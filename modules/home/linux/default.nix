@@ -3,6 +3,8 @@
 {
   programs.firefox.enable = true;
 
+  home.packages = [ pkgs.helium ];
+
   # `programs.niri.enable` lives at the system level (modules/nixos/desktop.nix);
   # that nixosModule injects this HM module, which exposes only `settings`.
   programs.niri.settings = {
