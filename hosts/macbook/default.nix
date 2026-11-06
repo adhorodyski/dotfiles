@@ -5,7 +5,7 @@
     enable = true;
     onActivation.cleanup = "zap";
     brews = [ "cocoapods" "rbenv" "watchman" ];
-    casks = [ "ghostty" "helium-browser" ];
+    casks = [ "ghostty" ];
   };
 
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
