@@ -14,7 +14,6 @@
     fastfetch
     pi
     ffmpeg
-    t3code
   ];
 
   home.sessionVariables.EDITOR = "nvim";
