@@ -23,7 +23,6 @@
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      # Macmini6,1: clear only AFTERG3_EN (bit 0) on the Intel LPC bridge.
       ExecStart = "${pkgs.pciutils}/bin/setpci -s 00:1f.0 0xa4.b=0:1";
     };
   };
