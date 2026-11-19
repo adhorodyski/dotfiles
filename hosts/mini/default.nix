@@ -17,6 +17,17 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
+  systemd.services.restore-on-ac-power = {
+    description = "Power on when AC power returns";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      # Macmini6,1: clear only AFTERG3_EN (bit 0) on the Intel LPC bridge.
+      ExecStart = "${pkgs.pciutils}/bin/setpci -s 00:1f.0 0xa4.b=0:1";
+    };
+  };
+
   networking.firewall = {
     enable = true;
     allowedUDPPorts = [
