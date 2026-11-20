@@ -49,5 +49,10 @@
   networking.enableB43Firmware = true;
   boot.blacklistedKernelModules = [ "wl" "brcmsmac" "brcmfmac" ];
 
-  environment.systemPackages = [ pkgs.restic ];
+  virtualisation.docker.enable = true;
+  users.users.adhorodyski.extraGroups = [ "docker" ];
+  environment.systemPackages = [
+    pkgs.docker-compose
+    pkgs.restic
+  ];
 }
