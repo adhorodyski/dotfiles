@@ -8,7 +8,6 @@
   system.stateVersion = "26.05";
 
   hardware.bluetooth = {
-    enable = true;
     input.General.ClassicBondedOnly = false;
   };
 
